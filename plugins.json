@@ -1,33 +1,33 @@
 [
     {
-        "name": "chipmunk.serialport.plugin",
-        "repo": "https://github.com/DmitryAstafyev/chipmunk.serialport.plugin.git",
+        "name": "chipmunk-serial-plugin",
+        "repo": "https://github.com/esrlabs/chipmunk-serial-plugin.git",
         "version": "1.0.1",
         "default": true,
         "has_to_be_signed": true
     },
     {
-        "name": "chipmunk.sh.plugin",
-        "repo": "https://github.com/DmitryAstafyev/chipmunk.sh.plugin.git",
+        "name": "chipmunk-sh-plugin",
+        "repo": "https://github.com/esrlabs/chipmunk-sh-plugin.git",
         "version": "1.0.0",
         "default": true
     },
     {
-        "name": "chipmunk.xterminal.plugin",
-        "repo": "https://github.com/DmitryAstafyev/chipmunk.xterminal.plugin.git",
+        "name": "chipmunk-terminal-plugin",
+        "repo": "https://github.com/esrlabs/chipmunk-terminal-plugin.git",
         "version": "1.0.1",
         "default": true,
         "has_to_be_signed": true
     },
     {
-        "name": "chipmunk.asciicolors.plugin",
-        "repo": "https://github.com/DmitryAstafyev/chipmunk.asciicolors.plugin.git",
+        "name": "chipmunk-asciicolors-plugin",
+        "repo": "https://github.com/esrlabs/chipmunk-asciicolors-plugin.git",
         "version": "1.0.0",
         "default": true
     },
     {
-        "name": "chipmunk.dltdetails.plugin",
-        "repo": "https://github.com/DmitryAstafyev/chipmunk.dltdetails.plugin.git",
+        "name": "chipmunk-dltview-plugin",
+        "repo": "https://github.com/esrlabs/chipmunk-dltview-plugin.git",
         "version": "1.0.0",
         "default": true
     }

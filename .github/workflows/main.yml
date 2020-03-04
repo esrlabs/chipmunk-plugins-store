@@ -42,9 +42,18 @@ jobs:
       - name: build plugins
         run: rake build --trace
         env:
-          CHIPMUNK_PLUGINS_STORE_GITHUB_TOKEN: ${{ secrets.CHIPMUNK_PLUGINS_STORE_GITHUB_TOKEN }}
-          CHIPMUNK_PLUGINS_STORE_GITHUB_LOGIN: ${{ secrets.CHIPMUNK_PLUGINS_STORE_GITHUB_LOGIN }}
-          CHIPMUNK_PLUGINS_STORE_GITHUB_PASW: ${{ secrets.CHIPMUNK_PLUGINS_STORE_GITHUB_PASW }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_LOGIN: ${{ secrets.GITHUB_LOGIN }}
+          GITHUB_PASW: ${{ secrets.GITHUB_PASW }}
+          KEYCHAIN_NAME: "build.keychain"
+          CSC_LINK: ${{ secrets.CSC_LINK }}
+          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+          APPLEID: ${{ secrets.APPLEID }}
+          APPLEIDPASS: ${{ secrets.APPLEIDPASS }}
+          SIGNING_ID: ${{ secrets.SIGNING_ID }}
+          KEYCHAIN_PWD: ${{ secrets.KEYCHAIN_PWD }}
+          SKIP_NOTARIZE: ${{ secrets.SKIP_NOTARIZE }}
+          CHIPMUNK_DEVELOPER_ID: ${{ secrets.CHIPMUNK_DEVELOPER_ID }}
       - name: Release
         uses: meatlink/action-gh-release@fix-econnreset
         if: startsWith(github.ref, 'refs/tags/')
@@ -54,8 +63,4 @@ jobs:
             ./releases/*.json
           draft: true
         env:
-          SKIP_NOTARIZE: ${{ secrets.SKIP_NOTARIZE }}
-          SIGNING_ID: ${{ secrets.SIGNING_ID }}
-          APPLEID: ${{ secrets.APPLEID }}
-          CHIPMUNK_DEVELOPER_ID: ${{ secrets.CHIPMUNK_DEVELOPER_ID }}
-          GITHUB_TOKEN: ${{ secrets.CHIPMUNK_PLUGINS_STORE_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

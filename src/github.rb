@@ -3,18 +3,18 @@
 require 'octokit'
 require 'open-uri'
 
-REPO = 'DmitryAstafyev/chipmunk.plugins.store'
+REPO = 'esrlabs/chipmunk-plugins-store'
 
 class Github
 
   def initialize
-    if !ENV['CHIPMUNK_PLUGINS_STORE_GITHUB_LOGIN'].nil? && !ENV['CHIPMUNK_PLUGINS_STORE_GITHUB_PASW'].nil? &&
-       ENV['CHIPMUNK_PLUGINS_STORE_GITHUB_LOGIN'] != '' && ENV['CHIPMUNK_PLUGINS_STORE_GITHUB_PASW'] != ''
+    if !ENV['GITHUB_LOGIN'].nil? && !ENV['GITHUB_PASW'].nil? &&
+       ENV['GITHUB_LOGIN'] != '' && ENV['GITHUB_PASW'] != ''
       puts 'Login to Github using login/password'
-      @client = Octokit::Client.new(login: ENV['CHIPMUNK_PLUGINS_STORE_GITHUB_LOGIN'], password: ENV['CHIPMUNK_PLUGINS_STORE_GITHUB_PASW'])
+      @client = Octokit::Client.new(login: ENV['GITHUB_LOGIN'], password: ENV['GITHUB_PASW'])
     else
       puts 'Login to Github using token'
-      @client = Octokit::Client.new(access_token: ENV['CHIPMUNK_PLUGINS_STORE_GITHUB_TOKEN'])
+      @client = Octokit::Client.new(access_token: ENV['GITHUB_TOKEN'])
     end
     user = @client.user
     puts "Github login: #{user.login}"

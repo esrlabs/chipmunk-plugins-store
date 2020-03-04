@@ -102,7 +102,6 @@ class PluginBackend
   end
 
   def self.notarize(path)
-    return nil
     return nil unless OS.mac?
     if ENV.key?('SKIP_NOTARIZE') && ENV['SKIP_NOTARIZE'].eql?('true')
       return nil
