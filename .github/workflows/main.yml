@@ -1,0 +1,61 @@
+name: Building
+
+on:
+  push:
+    branches:
+      - master         # Push events on master branch
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      max-parallel: 3
+      matrix:
+        os: [ubuntu-latest, macOS-latest, windows-2016]
+        rust: [stable]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Install windows python
+        uses: actions/setup-python@v1
+        if: startsWith(matrix.os, 'windows')
+        with:
+          python-version: '2.7'
+          architecture: 'x64' # (x64 or x86)
+      - name: install ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.x'
+      - name: install dotenv
+        run: gem install dotenv
+      - name: install octokit
+        run: gem install octokit
+      - name: install node
+        uses: actions/setup-node@master
+        with:
+          node-version: '10.16.3'
+      - name: install typescript
+        if: "!startsWith(matrix.os, 'windows')"
+        run: npm install --global typescript@3.5.1
+      - name: build plugins
+        run: rake build --trace
+        env:
+          CHIPMUNK_PLUGINS_STORE_GITHUB_TOKEN: ${{ secrets.CHIPMUNK_PLUGINS_STORE_GITHUB_TOKEN }}
+          CHIPMUNK_PLUGINS_STORE_GITHUB_LOGIN: ${{ secrets.CHIPMUNK_PLUGINS_STORE_GITHUB_LOGIN }}
+          CHIPMUNK_PLUGINS_STORE_GITHUB_PASW: ${{ secrets.CHIPMUNK_PLUGINS_STORE_GITHUB_PASW }}
+      - name: Release
+        uses: meatlink/action-gh-release@fix-econnreset
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            ./releases/*.tgz
+            ./releases/*.json
+          draft: true
+        env:
+          SKIP_NOTARIZE: ${{ secrets.SKIP_NOTARIZE }}
+          SIGNING_ID: ${{ secrets.SIGNING_ID }}
+          APPLEID: ${{ secrets.APPLEID }}
+          CHIPMUNK_DEVELOPER_ID: ${{ secrets.CHIPMUNK_DEVELOPER_ID }}
+          GITHUB_TOKEN: ${{ secrets.CHIPMUNK_PLUGINS_STORE_GITHUB_TOKEN }}

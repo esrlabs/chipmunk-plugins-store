@@ -1,0 +1,35 @@
+[
+    {
+        "name": "chipmunk.serialport.plugin",
+        "repo": "https://github.com/DmitryAstafyev/chipmunk.serialport.plugin.git",
+        "version": "1.0.1",
+        "default": true,
+        "has_to_be_signed": true
+    },
+    {
+        "name": "chipmunk.sh.plugin",
+        "repo": "https://github.com/DmitryAstafyev/chipmunk.sh.plugin.git",
+        "version": "1.0.0",
+        "default": true
+    },
+    {
+        "name": "chipmunk.xterminal.plugin",
+        "repo": "https://github.com/DmitryAstafyev/chipmunk.xterminal.plugin.git",
+        "version": "1.0.1",
+        "default": true,
+        "has_to_be_signed": true
+    },
+    {
+        "name": "chipmunk.asciicolors.plugin",
+        "repo": "https://github.com/DmitryAstafyev/chipmunk.asciicolors.plugin.git",
+        "version": "1.0.0",
+        "default": true
+    },
+    {
+        "name": "chipmunk.dltdetails.plugin",
+        "repo": "https://github.com/DmitryAstafyev/chipmunk.dltdetails.plugin.git",
+        "version": "1.0.0",
+        "default": true
+    }
+
+]
