@@ -117,7 +117,7 @@ class Plugin
     @summary += "\t- angular-material: #{dependencies['angular-material'] ? "TRUE" : "-"}\n"
     @summary += "\t- force: #{dependencies['force'] ? "TRUE" : "-"}\n"
     @summary += "Other:\n"
-    @summary += "\t- sign: #{backend.get_state.nil? ? '-' : backend.get_sign_state}s\n"
+    @summary += "\t- sign: #{!backend.exist ? 'no backend' : backend.get_sign_state}\n"
     @summary += "\t- hash: #{@versions.get_hash}\n"
     @summary += "\t- plugin hash: #{@versions.get_dep_hash(dependencies)}\n"
     @summary += "\t- built in: #{(ending - starting)}s\n"
