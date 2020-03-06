@@ -29,6 +29,18 @@ class Register
       puts 'Field "version" not found'
       return false
     end
+    unless entry.key?('display_name')
+      puts 'Field "display_name" not found'
+      return false
+    end
+    unless entry.key?('description')
+      puts 'Field "description" not found'
+      return false
+    end
+    unless entry.key?('readme')
+      puts 'Field "readme" not found'
+      return false
+    end
     true
   end
 

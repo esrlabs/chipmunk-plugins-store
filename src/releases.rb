@@ -115,6 +115,9 @@ class Releases
                     'dependencies' => release['dependencies'],
                     'phash' => release['phash'],
                     'hash' => @versions.get_hash,
+                    'display_name' => plugin['display_name'],
+                    'description' => plugin['description'],
+                    'readme' => plugin['readme'],
                     'default' => plugin['default'],
                     'signed' => plugin['has_to_be_signed']
                   })

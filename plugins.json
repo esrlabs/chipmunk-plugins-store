@@ -3,32 +3,47 @@
         "name": "chipmunk-serial-plugin",
         "repo": "https://github.com/esrlabs/chipmunk-serial-plugin.git",
         "version": "1.0.1",
-        "default": true,
+        "display_name": "Serial",
+        "description": "Promives access to serial ports and pipes stdout with chipmunk session",
+        "readme": "",
+        "default": false,
         "has_to_be_signed": true
     },
     {
         "name": "chipmunk-sh-plugin",
         "repo": "https://github.com/esrlabs/chipmunk-sh-plugin.git",
         "version": "1.0.0",
+        "display_name": "Commands",
+        "description": "Executes terminal commans and pipe output with chipmunk session",
+        "readme": "",
         "default": true
     },
     {
         "name": "chipmunk-terminal-plugin",
         "repo": "https://github.com/esrlabs/chipmunk-terminal-plugin.git",
         "version": "1.0.1",
-        "default": true,
+        "display_name": "Terminal",
+        "description": "OS terminal emulator",
+        "readme": "",
+        "default": false,
         "has_to_be_signed": true
     },
     {
         "name": "chipmunk-asciicolors-plugin",
         "repo": "https://github.com/esrlabs/chipmunk-asciicolors-plugin.git",
         "version": "1.0.0",
+        "display_name": "ASCII Colors",
+        "description": "Support of ASCII colors in views",
+        "readme": "",
         "default": true
     },
     {
         "name": "chipmunk-dltview-plugin",
         "repo": "https://github.com/esrlabs/chipmunk-dltview-plugin.git",
         "version": "1.0.0",
+        "display_name": "DLT rows parser",
+        "description": "Presents DLT files/streams as columns and provides details view of DLT entry",
+        "readme": "",
         "default": true
     }
 
