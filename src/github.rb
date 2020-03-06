@@ -16,8 +16,8 @@ class Github
       puts 'Login to Github using token'
       @client = Octokit::Client.new(access_token: ENV['GITHUB_TOKEN'])
     end
-    user = @client.user
-    puts "Github login: #{user.login}"
+    #user = @client.user
+    #puts "Github login: #{user.login}"
   end
 
   def get_releases_list(target)
