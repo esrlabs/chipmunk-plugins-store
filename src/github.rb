@@ -43,7 +43,7 @@ class Github
   def self.detect_last_tag(client)
     if ENV.key?('GITHUB_REF')
       tag = ENV['GITHUB_REF'].dup.sub!('refs/tags/', '')
-      if Gem::Version.correct?(tag)
+      if !tag.nil? && !tag.empty? && Gem::Version.correct?(tag)
         puts 'Tag was exctracted from REF'
         return tag
       end
