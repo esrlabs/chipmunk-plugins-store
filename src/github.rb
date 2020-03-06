@@ -16,7 +16,7 @@ class Github
       puts 'Login to Github using token'
       @client = Octokit::Client.new(access_token: ENV['GITHUB_TOKEN'])
     end
-    puts "The branch or tag ref: #{GITHUB_REF}"
+    puts "The branch or tag ref: #{ENV['GITHUB_REF']}"
     #user = @client.user
     #puts "Github login: #{user.login}"
   end
