@@ -6,7 +6,6 @@ require 'open-uri'
 REPO = 'esrlabs/chipmunk-plugins-store'
 
 class Github
-
   def initialize
     if !ENV['GITHUB_LOGIN'].nil? && !ENV['GITHUB_PASW'].nil? &&
        ENV['GITHUB_LOGIN'] != '' && ENV['GITHUB_PASW'] != ''
@@ -16,9 +15,8 @@ class Github
       puts 'Login to Github using token'
       @client = Octokit::Client.new(access_token: ENV['GITHUB_TOKEN'])
     end
-    puts "The branch or tag ref: #{ENV['GITHUB_REF']}"
-    #user = @client.user
-    #puts "Github login: #{user.login}"
+    @tag = self.class.detect_last_tag(@client)
+    puts "Detected tag: #{@tag}"
   end
 
   def get_releases_list(target)
@@ -30,9 +28,7 @@ class Github
     assets.each do |a|
       release_file_asset = a if a.name == target
     end
-    if release_file_asset.nil?
-      raise "Fail to find latest release file on repo #{REPO}"
-    end
+    raise "Fail to find latest release file on repo #{REPO}" if release_file_asset.nil?
 
     puts "Reading releases file from \"#{release_file_asset.browser_download_url}\""
     release_file_asset_contents = open(release_file_asset.browser_download_url, &:read)
@@ -41,10 +37,22 @@ class Github
   end
 
   def get_last_tag
-    tags = @client.tags(REPO, {})
+    @tag
+  end
+
+  def self.detect_last_tag(client)
+    if ENV.key?('GITHUB_REF')
+      tag = ENV['GITHUB_REF'].dup.sub!('refs/tags/', '')
+      if Gem::Version.correct?(tag)
+        puts 'Tag was exctracted from REF'
+        return tag
+      end
+    end
+    tags = client.tags(REPO, {})
     raise "At least one tag should be defined on #{REPO}" if tags.empty?
 
     tags = tags.sort { |a, b| Gem::Version.new(b.name) <=> Gem::Version.new(a.name) }
-    tags[0]
+    puts "Tag was gotten from list of repo's tags"
+    tags[0].name
   end
 end

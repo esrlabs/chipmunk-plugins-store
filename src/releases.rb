@@ -14,7 +14,6 @@ class Releases
     @git = Github.new
     @releases = self.class.validate(@git.get_releases_list(self.class.get_name))
     @tag = @git.get_last_tag
-    puts "Last tag detected: #{@tag.name}"
   end
 
   def exist(file_name)
@@ -66,7 +65,7 @@ class Releases
                      'version' => version,
                      'dependencies' => dependencies,
                      'phash' => @versions.get_dep_hash(dependencies),
-                     'url' => RELEASE_URL_PATTERN.sub('${tag}', @tag.name).sub('${file_name}', file_name)
+                     'url' => RELEASE_URL_PATTERN.sub('${tag}', @tag).sub('${file_name}', file_name)
                    })
   end
 
@@ -126,7 +125,7 @@ class Releases
   end
 
   def get_url(file_name)
-    RELEASE_URL_PATTERN.sub('${tag}', @tag.name).sub('${file_name}', file_name)
+    RELEASE_URL_PATTERN.sub('${tag}', @tag).sub('${file_name}', file_name)
   end
 
   def self.get_name
