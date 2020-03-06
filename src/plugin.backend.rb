@@ -100,7 +100,7 @@ class PluginBackend
   def get_sign_state
     @sign_state
   end
-
+  
   def self.notarize(path)
     return nil unless OS.mac?
     if ENV.key?('SKIP_NOTARIZE') && ENV['SKIP_NOTARIZE'].eql?('true')
@@ -111,9 +111,8 @@ class PluginBackend
     elsif ENV.key?('CHIPMUNK_DEVELOPER_ID')
       signing_id = ENV['CHIPMUNK_DEVELOPER_ID']
     else
-      puts 'Cannot sign plugins because cannot find signing_id.'
-      puts 'Define it in APPLEID (for production) or in CHIPMUNK_DEVELOPER_ID (for developing)'
-      return 'Fail to find APPLEID or CHIPMUNK_DEVELOPER_ID'
+      puts 'Cannot sign plugins because cannot find signing_id (SIGNING_ID or CHIPMUNK_DEVELOPER_ID).'
+      return 'Fail to find SIGNING_ID or CHIPMUNK_DEVELOPER_ID'
     end
     begin
       puts "Detected next SIGNING_ID = #{signing_id}\nTry to sign code for: #{path}"
