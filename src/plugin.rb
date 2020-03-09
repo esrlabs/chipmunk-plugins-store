@@ -104,6 +104,7 @@ class Plugin
                           'display_name' => @info['display_name'],
                           'description' => @info['description'],
                           'readme' => @info['readme'],
+                          'icon' => @info['icon'],
                           'dependencies' => dependencies
                         })
     compress("#{PLUGIN_RELEASE_FOLDER}/#{file_name}", PLUGIN_RELEASE_FOLDER, @info['name'])
