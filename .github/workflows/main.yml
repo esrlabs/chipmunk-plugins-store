@@ -39,6 +39,29 @@ jobs:
       - name: install typescript
         if: "!startsWith(matrix.os, 'windows')"
         run: npm install --global typescript@3.5.1
+      - name: setup keychain for signing and notarising
+        if: runner.os == 'macOS'
+        env:
+          KEYCHAIN_NAME: "build.keychain"
+          CSC_LINK: ${{ secrets.CSC_LINK }}
+          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+          KEYCHAIN_PWD: ${{ secrets.KEYCHAIN_PWD }}
+        run: |
+          security create-keychain -p "$KEYCHAIN_PWD" "$KEYCHAIN_NAME"
+          security default-keychain -s "$KEYCHAIN_NAME"
+          certfile="${HOME}/buildcert.p12"
+          echo "$CSC_LINK" | base64 -d > "$certfile"
+          security import \
+            "$certfile" \
+            -P "$CSC_KEY_PASSWORD" \
+            -A \
+            -k "$KEYCHAIN_NAME"
+          rm "$certfile"
+          security set-key-partition-list \
+            -S 'apple:' \
+            -s \
+            -k "$KEYCHAIN_PWD" \
+            "$KEYCHAIN_NAME"
       - name: build plugins
         run: rake build --trace
         env:
@@ -53,7 +76,6 @@ jobs:
           SIGNING_ID: ${{ secrets.SIGNING_ID }}
           KEYCHAIN_PWD: ${{ secrets.KEYCHAIN_PWD }}
           SKIP_NOTARIZE: ${{ secrets.SKIP_NOTARIZE }}
-          CHIPMUNK_DEVELOPER_ID: ${{ secrets.CHIPMUNK_DEVELOPER_ID }}
       - name: Release
         uses: meatlink/action-gh-release@fix-econnreset
         if: startsWith(github.ref, 'refs/tags/')
