@@ -5,8 +5,8 @@
         "version": "1.0.1",
         "display_name": "Serial",
         "description": "Provides access to serial ports and pipes stdout with chipmunk session",
-        "readme": "",
-        "icon": "",
+        "readme": "https://raw.githubusercontent.com/esrlabs/chipmunk/master/README.md",
+        "icon": "https://raw.githubusercontent.com/esrlabs/chipmunk-terminal-plugin/master/icon.png",
         "default": false,
         "has_to_be_signed": true
     },
@@ -16,8 +16,8 @@
         "version": "1.0.0",
         "display_name": "Commands",
         "description": "Executes terminal commands and pipe output with chipmunk session",
-        "readme": "",
-        "icon": "",
+        "readme": "https://raw.githubusercontent.com/esrlabs/chipmunk/master/README.md",
+        "icon": "https://raw.githubusercontent.com/esrlabs/chipmunk-terminal-plugin/master/icon.png",
         "default": true
     },
     {
@@ -26,8 +26,8 @@
         "version": "1.0.1",
         "display_name": "Terminal",
         "description": "OS terminal emulator",
-        "readme": "",
-        "icon": "",
+        "readme": "https://raw.githubusercontent.com/esrlabs/chipmunk/master/README.md",
+        "icon": "https://raw.githubusercontent.com/esrlabs/chipmunk-terminal-plugin/master/icon.png",
         "default": false,
         "has_to_be_signed": true
     },
@@ -37,8 +37,8 @@
         "version": "1.0.0",
         "display_name": "ASCII Colors",
         "description": "Support of ASCII colors in views",
-        "readme": "",
-        "icon": "",
+        "readme": "https://raw.githubusercontent.com/esrlabs/chipmunk/master/README.md",
+        "icon": "https://raw.githubusercontent.com/esrlabs/chipmunk-terminal-plugin/master/icon.png",
         "default": true
     },
     {
@@ -47,8 +47,8 @@
         "version": "1.0.0",
         "display_name": "DLT Details",
         "description": "Presents DLT files/streams as columns and provides details view of DLT entry",
-        "readme": "",
-        "icon": "",
+        "readme": "https://raw.githubusercontent.com/esrlabs/chipmunk/master/README.md",
+        "icon": "https://raw.githubusercontent.com/esrlabs/chipmunk-terminal-plugin/master/icon.png",
         "default": true
     }
 
