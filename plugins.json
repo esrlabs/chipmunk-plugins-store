@@ -6,6 +6,7 @@
         "display_name": "Serial",
         "description": "Provides access to serial ports and pipes stdout with chipmunk session",
         "readme": "",
+        "icon": "",
         "default": false,
         "has_to_be_signed": true
     },
@@ -16,6 +17,7 @@
         "display_name": "Commands",
         "description": "Executes terminal commands and pipe output with chipmunk session",
         "readme": "",
+        "icon": "",
         "default": true
     },
     {
@@ -25,6 +27,7 @@
         "display_name": "Terminal",
         "description": "OS terminal emulator",
         "readme": "",
+        "icon": "",
         "default": false,
         "has_to_be_signed": true
     },
@@ -35,6 +38,7 @@
         "display_name": "ASCII Colors",
         "description": "Support of ASCII colors in views",
         "readme": "",
+        "icon": "",
         "default": true
     },
     {
@@ -44,6 +48,7 @@
         "display_name": "DLT Details",
         "description": "Presents DLT files/streams as columns and provides details view of DLT entry",
         "readme": "",
+        "icon": "",
         "default": true
     }
 

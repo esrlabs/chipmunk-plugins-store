@@ -117,6 +117,7 @@ class Releases
                     'display_name' => plugin['display_name'],
                     'description' => plugin['description'],
                     'readme' => plugin['readme'],
+                    'icon' => plugin['icon'],
                     'default' => plugin['default'],
                     'signed' => plugin['has_to_be_signed']
                   })
