@@ -1,16 +1,14 @@
 # frozen_string_literal: true
 
 require 'json'
+require 'open-uri'
 
-VERSIONS_FILE = './versions.json'
+VERSIONS_FILE_URL = "https://raw.githubusercontent.com/esrlabs/chipmunk/master/versions.json";
 
 class Versions
   def initialize
-    unless File.file?(VERSIONS_FILE)
-      raise "Fail to find versions file: #{VERSIONS_FILE}"
-    end
-
-    @versions_str = File.read(VERSIONS_FILE.to_s)
+    puts "Reading versions file from \"#{VERSIONS_FILE_URL}\""
+    @versions_str = open(VERSIONS_FILE_URL) { |f| f.read }
     @versions = JSON.parse(@versions_str)
     puts "Next versions of frameworks/modules will be used:\n"
     puts "\telectron: #{@versions['electron']}\n"
