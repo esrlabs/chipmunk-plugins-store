@@ -72,7 +72,7 @@ class Releases
   def write
     unless File.directory?(PLUGIN_RELEASE_FOLDER)
       Rake.mkdir_p(PLUGIN_RELEASE_FOLDER, verbose: true)
-      puts "Creating release folder: #{TMP_FOLDER}"
+      puts "Creating release folder: #{PLUGIN_RELEASE_FOLDER}"
     end
     File.open("./#{PLUGIN_RELEASE_FOLDER}/#{self.class.get_name}", 'w') do |f|
       f.write(@releases.to_json)

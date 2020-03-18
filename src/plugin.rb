@@ -7,12 +7,13 @@ require './src/plugin.frontend'
 require './src/tools'
 
 class Plugin
-  def initialize(info, path, versions, releases)
+  def initialize(info, path, versions, releases, rebuild)
     @info = info
     @path = path
     @versions = versions
     @root = "#{@path}/#{@info['name']}"
     @releases = releases
+    @rebuild = rebuild
     @summary = "Plugin \"#{@info['name']}\" summary:\n"
   end
 
@@ -20,7 +21,7 @@ class Plugin
     starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
     target_file_name = self.class.get_name(@info['name'], @versions.get_hash, @info['version'])
     # Check version of plugin and make decision: update or not update (build or not build)
-    if @releases.exist(target_file_name)
+    if @releases.exist(target_file_name) && !@rebuild
       puts "No need to build plugin #{@info['name']} because it's already exist"
       @summary += "Building is skipped: release already exists\n"
       @releases.write
@@ -30,7 +31,7 @@ class Plugin
     backend = PluginBackend.new(@root, @versions.get, @info['has_to_be_signed'])
     frontend = PluginFrontend.new(@root, @versions.get)
     dependencies = self.class.get_dependencies(backend, frontend)
-    unless @releases.has_to_be_update(@info['name'], dependencies)
+    if !@releases.has_to_be_update(@info['name'], dependencies) && !@rebuild
       puts 'Available version of plugin is actual. No need to rebuild.'
       @summary += "Building is skipped: release is still actual\n"
       @releases.write

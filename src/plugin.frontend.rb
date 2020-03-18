@@ -7,6 +7,7 @@ require './src/plugin.frontend.notangular'
 PLUGIN_FRONTEND_FOLDER = 'render'
 PLUGIN_FRONTEND_ANGULAR_PACKAGE = 'ng-package.json'
 PLUGIN_FRONTEND_ANGULAR_BASE_REPO = 'https://github.com/esrlabs/chipmunk-angular.git'
+#PLUGIN_FRONTEND_ANGULAR_BASE_REPO = 'https://github.com/DmitryAstafyev/chipmunk-angular.git'
 PLUGIN_FRONTEND_ANGULAR_BASE_NAME = 'chipmunk-angular'
 TMP_FOLDER = './tmp'
 

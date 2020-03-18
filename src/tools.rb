@@ -24,7 +24,10 @@ def compress(output_file, pwd, dest)
   end
 end
 
-def cleanup
+def cleanup(all)
   Rake.rm_r(TMP_FOLDER, force: true) if File.directory?(TMP_FOLDER)
   Rake.rm_r(PLUGINS_DEST_FOLDER, force: true) if File.directory?(PLUGINS_DEST_FOLDER)
+  if all
+    Rake.rm_r(PLUGIN_RELEASE_FOLDER, force: true) if File.directory?(PLUGIN_RELEASE_FOLDER)
+  end
 end

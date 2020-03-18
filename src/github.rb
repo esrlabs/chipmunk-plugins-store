@@ -31,7 +31,7 @@ class Github
     raise "Fail to find latest release file on repo #{REPO}" if release_file_asset.nil?
 
     puts "Reading releases file from \"#{release_file_asset.browser_download_url}\""
-    release_file_asset_contents = open(release_file_asset.browser_download_url, &:read)
+    release_file_asset_contents = URI.open(release_file_asset.browser_download_url, &:read)
     releases = JSON.parse(release_file_asset_contents)
     releases
   end
