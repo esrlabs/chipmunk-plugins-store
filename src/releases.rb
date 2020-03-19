@@ -79,6 +79,39 @@ class Releases
     end
   end
 
+  def normalize(register)
+    result = []
+    @releases.each do |release|
+      plugin = register.get_by_name(release['name'])
+      next if plugin.nil?
+      result.push({
+                    'name' => release['name'],
+                    'file' => release['file'],
+                    'version' => release['version'],
+                    'url' => release['url'],
+                    'dependencies' => release['dependencies'],
+                    'phash' => release['phash'],
+                    'hash' => @versions.get_hash,
+                    'display_name' => plugin['display_name'],
+                    'description' => plugin['description'],
+                    'readme' => plugin['readme'],
+                    'icon' => plugin['icon'],
+                    'default' => plugin['default'],
+                    'signed' => plugin['has_to_be_signed'],
+                    'history' => self.class.get_history(release, @versions.get_hash)
+                  })
+    end
+    @releases = result
+  end
+
+  def get_url(file_name)
+    RELEASE_URL_PATTERN.sub('${tag}', @tag).sub('${file_name}', file_name)
+  end
+
+  def self.get_name
+    "#{RELEASES_FILE_NAME}-#{get_nodejs_platform}.json"
+  end
+
   def self.validate(releases)
     result = []
     releases.each do |release|
@@ -100,36 +133,18 @@ class Releases
     result
   end
 
-  def normalize(register)
-    result = []
-    @releases.each do |release|
-      plugin = register.get_by_name(release['name'])
-      next if plugin.nil?
-
-      result.push({
-                    'name' => release['name'],
-                    'file' => release['file'],
-                    'version' => release['version'],
-                    'url' => release['url'],
-                    'dependencies' => release['dependencies'],
-                    'phash' => release['phash'],
-                    'hash' => @versions.get_hash,
-                    'display_name' => plugin['display_name'],
-                    'description' => plugin['description'],
-                    'readme' => plugin['readme'],
-                    'icon' => plugin['icon'],
-                    'default' => plugin['default'],
-                    'signed' => plugin['has_to_be_signed']
-                  })
-    end
-    @releases = result
-  end
-
-  def get_url(file_name)
-    RELEASE_URL_PATTERN.sub('${tag}', @tag).sub('${file_name}', file_name)
-  end
-
-  def self.get_name
-    "#{RELEASES_FILE_NAME}-#{get_nodejs_platform}.json"
+  def self.get_history(release, hash)
+    history = []
+    history = release['history'] if release.key?('history')
+    key = "#{release['phash']}#{hash}#{release['version']}"
+    exists = history.detect { |r| key == "#{r['phash']}#{r['hash']}#{r['version']}" }
+    return history unless exists.nil?
+    history.unshift({
+                   'phash' => release['phash'],
+                   'hash' => hash,
+                   'url' => release['url'],
+                   'version' => release['version']
+                 })
+    history
   end
 end
