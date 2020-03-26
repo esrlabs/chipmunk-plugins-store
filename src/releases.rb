@@ -6,7 +6,6 @@ require './src/tools'
 
 RELEASES_FILE_NAME = 'releases'
 RELEASE_URL_PATTERN = 'https://github.com/esrlabs/chipmunk-plugins-store/releases/download/${tag}/${file_name}'
-#RELEASE_URL_PATTERN = 'https://github.com/DmitryAstafyev/chipmunk.plugins.store/releases/download/${tag}/${file_name}'
 
 class Releases
   def initialize(register, versions)
