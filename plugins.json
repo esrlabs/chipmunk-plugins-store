@@ -13,7 +13,7 @@
     {
         "name": "chipmunk-sh-plugin",
         "repo": "https://github.com/esrlabs/chipmunk-sh-plugin.git",
-        "version": "1.0.2",
+        "version": "1.0.3",
         "display_name": "Commands",
         "description": "Executes terminal commands and pipe output with chipmunk session",
         "readme": "https://raw.githubusercontent.com/esrlabs/chipmunk/master/README.md",
