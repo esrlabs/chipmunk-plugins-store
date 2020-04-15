@@ -44,7 +44,7 @@
     {
         "name": "chipmunk-dltview-plugin",
         "repo": "https://github.com/esrlabs/chipmunk-dltview-plugin.git",
-        "version": "1.0.0",
+        "version": "1.2.0",
         "display_name": "DLT Details",
         "description": "Presents DLT files/streams as columns and provides details view of DLT entry",
         "readme": "https://raw.githubusercontent.com/esrlabs/chipmunk/master/README.md",
