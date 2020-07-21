@@ -2,7 +2,7 @@
     {
         "name": "chipmunk-serial-plugin",
         "repo": "https://github.com/esrlabs/chipmunk-serial-plugin.git",
-        "version": "1.2.3",
+        "version": "1.2.4",
         "display_name": "Serial",
         "description": "Provides access to serial ports and pipes stdout with chipmunk session",
         "readme": "https://raw.githubusercontent.com/esrlabs/chipmunk/master/README.md",
