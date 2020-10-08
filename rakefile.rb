@@ -14,6 +14,9 @@ def build(target, rebuild, clean)
   versions = Versions.new
   releases = Releases.new(register, versions)
   summary = ''
+  failed = ''
+  count = 0
+  done = 0
 
   puts "Current versions hash:\n\t#{versions.get_hash}\n"
 
@@ -27,15 +30,24 @@ def build(target, rebuild, clean)
     if plugin.build
       plugin.cleanup if clean
       puts "Plugin #{plugin_info['name']} is built SUCCESSFULLY"
+      done += 1
     else
-      puts "Fail to build plugin #{plugin_info['name']}"
+      failed += "FAIL to build plugin #{plugin_info['name']}\n"
     end
+    count += 1
     summary += plugin.get_summary
   end
   releases.normalize(register)
   releases.write
   cleanup(false) if clean
+  puts "\n\n#{'=' * 50}\nSummary: built #{done} from #{count}\n#{'=' * 50}"
   puts summary
+  if failed != ''
+    puts "\n\n#{'=' * 50}\nBuild of #{count - done} is FAILED\n#{'=' * 50}"
+    puts failed
+    STDERR.puts("#{count - done} from #{count} are FAILED")
+    exit(false)
+  end
 end
 
 task :build, [:target] do |_t, args|
