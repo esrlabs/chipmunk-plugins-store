@@ -11,27 +11,6 @@
         "has_to_be_signed": true
     },
     {
-        "name": "chipmunk-sh-plugin",
-        "repo": "https://github.com/esrlabs/chipmunk-sh-plugin.git",
-        "version": "1.0.3",
-        "display_name": "Commands",
-        "description": "Executes terminal commands and pipe output with chipmunk session",
-        "readme": "https://raw.githubusercontent.com/esrlabs/chipmunk/master/README.md",
-        "icon": "https://raw.githubusercontent.com/esrlabs/chipmunk-terminal-plugin/master/icon.png",
-        "default": true
-    },
-    {
-        "name": "chipmunk-terminal-plugin",
-        "repo": "https://github.com/esrlabs/chipmunk-terminal-plugin.git",
-        "version": "1.0.1",
-        "display_name": "Terminal",
-        "description": "OS terminal emulator",
-        "readme": "https://raw.githubusercontent.com/esrlabs/chipmunk/master/README.md",
-        "icon": "https://raw.githubusercontent.com/esrlabs/chipmunk-terminal-plugin/master/icon.png",
-        "default": false,
-        "has_to_be_signed": true
-    },
-    {
         "name": "chipmunk-asciicolors-plugin",
         "repo": "https://github.com/esrlabs/chipmunk-asciicolors-plugin.git",
         "version": "1.1.0",
