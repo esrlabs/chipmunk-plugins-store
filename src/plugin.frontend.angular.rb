@@ -65,8 +65,6 @@ class PluginFrontendAngular
     end
     Rake.cd "#{TMP_FOLDER}/#{PLUGIN_FRONTEND_ANGULAR_BASE_NAME}" do
       begin
-        puts "Lint \"#{@package_json['name']}\""
-        Rake.sh "./node_modules/.bin/ng lint #{@package_json['name']}"
         puts "Build \"#{@package_json['name']}\""
         Rake.sh "./node_modules/.bin/ng build #{@package_json['name']}"
         return true
