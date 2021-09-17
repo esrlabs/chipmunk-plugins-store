@@ -1,34 +1,33 @@
 [
-    {
-        "name": "chipmunk-serial-plugin",
-        "repo": "https://github.com/esrlabs/chipmunk-serial-plugin.git",
-        "version": "1.2.6",
-        "display_name": "Serial",
-        "description": "Provides access to serial ports and pipes stdout with chipmunk session",
-        "readme": "https://raw.githubusercontent.com/esrlabs/chipmunk/master/README.md",
-        "icon": "https://raw.githubusercontent.com/esrlabs/chipmunk-terminal-plugin/master/icon.png",
-        "default": false,
-        "has_to_be_signed": true
-    },
-    {
-        "name": "chipmunk-asciicolors-plugin",
-        "repo": "https://github.com/esrlabs/chipmunk-asciicolors-plugin.git",
-        "version": "1.1.0",
-        "display_name": "ASCII Colors",
-        "description": "Support of ASCII colors in views",
-        "readme": "https://raw.githubusercontent.com/esrlabs/chipmunk/master/README.md",
-        "icon": "https://raw.githubusercontent.com/esrlabs/chipmunk-terminal-plugin/master/icon.png",
-        "default": true
-    },
-    {
-        "name": "chipmunk-dltview-plugin",
-        "repo": "https://github.com/esrlabs/chipmunk-dltview-plugin.git",
-        "version": "1.2.2",
-        "display_name": "DLT Details",
-        "description": "Presents DLT files/streams as columns and provides details view of DLT entry",
-        "readme": "https://raw.githubusercontent.com/esrlabs/chipmunk/master/README.md",
-        "icon": "https://raw.githubusercontent.com/esrlabs/chipmunk-terminal-plugin/master/icon.png",
-        "default": true
-    }
-
+  {
+    "name": "chipmunk-serial-plugin",
+    "repo": "https://github.com/esrlabs/chipmunk-serial-plugin.git",
+    "version": "1.2.7",
+    "display_name": "Serial",
+    "description": "Provides access to serial ports and pipes stdout with chipmunk session",
+    "readme": "https://raw.githubusercontent.com/esrlabs/chipmunk/master/README.md",
+    "icon": "https://raw.githubusercontent.com/esrlabs/chipmunk-terminal-plugin/master/icon.png",
+    "default": false,
+    "has_to_be_signed": true
+  },
+  {
+    "name": "chipmunk-asciicolors-plugin",
+    "repo": "https://github.com/esrlabs/chipmunk-asciicolors-plugin.git",
+    "version": "1.1.0",
+    "display_name": "ASCII Colors",
+    "description": "Support of ASCII colors in views",
+    "readme": "https://raw.githubusercontent.com/esrlabs/chipmunk/master/README.md",
+    "icon": "https://raw.githubusercontent.com/esrlabs/chipmunk-terminal-plugin/master/icon.png",
+    "default": true
+  },
+  {
+    "name": "chipmunk-dltview-plugin",
+    "repo": "https://github.com/esrlabs/chipmunk-dltview-plugin.git",
+    "version": "1.2.2",
+    "display_name": "DLT Details",
+    "description": "Presents DLT files/streams as columns and provides details view of DLT entry",
+    "readme": "https://raw.githubusercontent.com/esrlabs/chipmunk/master/README.md",
+    "icon": "https://raw.githubusercontent.com/esrlabs/chipmunk-terminal-plugin/master/icon.png",
+    "default": true
+  }
 ]
