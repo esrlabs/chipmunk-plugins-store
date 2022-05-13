@@ -17,8 +17,10 @@ def copy_dist(from, to)
 end
 
 def compress(output_file, pwd, dest)
+  puts "Compressing with:"
+  Rake.sh "tar --version";
   if OS.windows?
-    Rake.sh "tar -czf #{output_file} -C #{pwd} #{dest} --force-local"
+    Rake.sh "tar -czf #{output_file} -C #{pwd}/#{dest} ."
   else
     Rake.sh "tar -czf #{output_file} -C #{pwd} #{dest} "
   end
